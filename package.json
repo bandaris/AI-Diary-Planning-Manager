@@ -1,0 +1,68 @@
+{
+  "name": "diary-hero",
+  "private": true,
+  "version": "1.0.0",
+  "description": "我的私人AI记录管家",
+  "author": "Me",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "server": "node server/index.js",
+    "build": "vite build",
+    "preview": "vite preview",
+    "electron:dev": "cross-env ELECTRON_USER_DATA_PATH=. electron .",
+    "electron:build": "npm run build && electron-builder"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.2",
+    "@fullcalendar/core": "^6.1.20",
+    "@fullcalendar/daygrid": "^6.1.20",
+    "@fullcalendar/interaction": "^6.1.20",
+    "@fullcalendar/list": "^6.1.20",
+    "@fullcalendar/timegrid": "^6.1.20",
+    "@fullcalendar/vue3": "^6.1.20",
+    "@types/markdown-it": "^14.1.2",
+    "axios": "^1.13.4",
+    "element-plus": "^2.13.1",
+    "lucide-vue-next": "^0.563.0",
+    "markdown-it": "^14.1.0",
+    "marked": "^17.0.1",
+    "vue": "^3.5.24"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "@vue/tsconfig": "^0.8.1",
+    "cross-env": "^10.1.0",
+    "electron": "^40.1.0",
+    "electron-builder": "^26.7.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.2.4",
+    "vue-tsc": "^3.1.4"
+  },
+  "build": {
+    "appId": "com.diaryhero.app",
+    "productName": "记录管家",
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "public/mini.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "server/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      "server/**/*"
+    ]
+  }
+}
